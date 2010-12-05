@@ -1,0 +1,35 @@
+<%= simple_form_for(@project) do |f| %>
+<% if @project.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@project.errors.count, "error") %> prohibited this record from being saved:</h2>
+    <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+        <li>
+            <%= msg %>
+        </li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :type %>
+Planned:
+<br/>
+<%= f.input :planned_start_date,  :as => :date, :label => "Start Date", :include_blank => true, :start_year => Date.today.year,
+                                  :end_year => (Date.today.year + 5), :order => [:month, :day, :year] %>
+<%= f.input :planned_end_date,    :as => :date, :label => "End Date", :include_blank => true, :start_year => Date.today.year,
+                                  :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
+Actual: <br/>
+<%= f.input :actual_start_date,   :as => :date, :label => "Start Date", :include_blank => true, :start_year => Date.today.year,
+                                  :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
+<%= f.input :actual_end_date,     :as => :date, :label => "End Date", :include_blank => true, :start_year => Date.today.year,
+                                  :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
+
+<%= f.input :status %>
+<%= f.association :client, :include_blank => false %>
+
+<%= f.button :submit%>
+
+<% end %>
