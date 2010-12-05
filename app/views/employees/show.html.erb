@@ -1,0 +1,19 @@
+<p>
+    <b>Name:</b>
+    <%= @employee.full_name %>
+    <br/>
+    <b>Active:</b>
+    <%= @employee.enabled %>
+    <br/>
+    <b>Date of birth:</b>
+    <%= @employee.dateofbirth %>
+    <br/>
+    <b>Standard rate:</b>
+    <%= @employee.standard_rate %>
+    <br/>
+    <b>Home territory:</b>
+    <%= @employee.territory.name%>
+</p>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

@@ -1,0 +1,25 @@
+<% title "Update territory - #{@territory.name}" %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @territory.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @territory.description %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @territory.country.name %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @territory.state.name %>
+</p>
+
+<%= link_to 'Edit', edit_territory_path(@territory) %> |
+<%= link_to 'Back', territories_path %>
