@@ -77,16 +77,21 @@ ActiveRecord::Schema.define(:version => 20101205124730) do
 
   create_table "projects", :force => true do |t|
     t.string   "name",               :limit => 60, :null => false
-    t.text     "description",                      :null => false
+    t.text     "description"
+    t.string   "type",               :limit => 5,  :null => false
     t.integer  "status",                           :null => false
-    t.integer  "client_id",                        :null => false
-    t.datetime "planned_start_date"
-    t.datetime "actual_start_date"
-    t.datetime "planned_end_date"
-    t.datetime "actual_end_date"
+    t.integer  "client_id"
+    t.string   "reference",          :limit => 20
+    t.date     "planned_start_date"
+    t.date     "actual_start_date"
+    t.date     "planned_end_date"
+    t.date     "actual_end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["client_id", "id"], :name => "by_client_id", :unique => true
+  add_index "projects", ["planned_start_date", "id"], :name => "by_planned_start_date", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
