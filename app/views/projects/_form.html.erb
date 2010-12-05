@@ -12,24 +12,26 @@
 </div>
 <% end %>
 
+<%= f.association :client, :include_blank => false %>
 <%= f.input :name %>
 <%= f.input :description %>
-<%= f.input :type %>
+<%= f.input :type, :collection => ["Template", "Type 1", "Type 2"], :prompt => "Select type", :hint => "Place holder for list of project types"%>
+<%= f.input :status, :hint => "[Active] [Held] [Pending]" %>
+Customer specific settings:
+<br/>
+<%= f.input :reference, :hint => "i.e. client's internal project number" %>
 Planned:
 <br/>
 <%= f.input :planned_start_date,  :as => :date, :label => "Start Date", :include_blank => true, :start_year => Date.today.year,
                                   :end_year => (Date.today.year + 5), :order => [:month, :day, :year] %>
 <%= f.input :planned_end_date,    :as => :date, :label => "End Date", :include_blank => true, :start_year => Date.today.year,
                                   :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
-Actual: <br/>
+Actual: 
+<br/>
 <%= f.input :actual_start_date,   :as => :date, :label => "Start Date", :include_blank => true, :start_year => Date.today.year,
                                   :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
 <%= f.input :actual_end_date,     :as => :date, :label => "End Date", :include_blank => true, :start_year => Date.today.year,
                                   :end_year => Date.today.year + 5, :order => [:month, :day, :year] %>
 
-<%= f.input :status %>
-<%= f.association :client, :include_blank => false %>
-
 <%= f.button :submit%>
-
 <% end %>

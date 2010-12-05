@@ -1,6 +1,7 @@
 class CreateProjects < ActiveRecord::Migration
   def self.up
     create_table :projects do |t|
+      t.integer     :parent_id
       t.string      :name,         :null => false, :limit => 60
       t.text        :description  
       t.string      :type,         :null => false, :limit => 5

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205124730) do
+ActiveRecord::Schema.define(:version => 20101205164610) do
 
   create_table "addresses", :force => true do |t|
     t.string   "name",        :limit => 60, :null => false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20101205124730) do
   end
 
   create_table "projects", :force => true do |t|
+    t.integer  "parent_id"
     t.string   "name",               :limit => 60, :null => false
     t.text     "description"
     t.string   "type",               :limit => 5,  :null => false
@@ -107,6 +108,27 @@ ActiveRecord::Schema.define(:version => 20101205124730) do
     t.string  "name",       :limit => 60,                   :null => false
     t.integer "country_id",                                 :null => false
     t.string  "code",       :limit => 10, :default => "XX", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "sequence"
+    t.string   "name",               :limit => 60, :null => false
+    t.text     "description"
+    t.integer  "status",                           :null => false
+    t.integer  "projects_id"
+    t.string   "reference",          :limit => 20
+    t.date     "planned_start_date"
+    t.date     "actual_start_date"
+    t.date     "planned_end_date"
+    t.date     "actual_end_date"
+    t.integer  "duration"
+    t.string   "duration_type"
+    t.integer  "perc_complete"
+    t.integer  "priority"
+    t.boolean  "notif_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "territories", :force => true do |t|
