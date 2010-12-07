@@ -1,7 +1,7 @@
 class Employee < ActiveRecord::Base
-
     attr_accessible :first_name, :last_name, :standard_rate, :enabled, :territory_id, :dateofbirth
     belongs_to :territory
+    has_many :addresses, :as => :addressable
     
     validates_presence_of :first_name, :last_name
 

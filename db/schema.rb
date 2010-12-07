@@ -10,17 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205164610) do
+ActiveRecord::Schema.define(:version => 20101207095222) do
 
   create_table "addresses", :force => true do |t|
-    t.string   "name",        :limit => 60, :null => false
-    t.string   "city",        :limit => 60, :null => false
+    t.string   "name",             :limit => 60, :null => false
+    t.string   "city",             :limit => 60, :null => false
     t.integer  "state_id"
-    t.integer  "country_id",                :null => false
-    t.string   "postal_code", :limit => 10
+    t.integer  "country_id",                     :null => false
+    t.string   "postal_code",      :limit => 10
     t.text     "street"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
   end
 
   create_table "client_contacts", :id => false, :force => true do |t|
@@ -50,13 +52,15 @@ ActiveRecord::Schema.define(:version => 20101205164610) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.string   "name",          :limit => 60
-    t.string   "title",         :limit => 60
-    t.string   "first_name",    :limit => 60
-    t.string   "last_name",     :limit => 60
+    t.string   "name",             :limit => 60
+    t.string   "title",            :limit => 60
+    t.string   "first_name",       :limit => 60
+    t.string   "last_name",        :limit => 60
     t.integer  "salutation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contactable"
+    t.string   "contactable_type"
   end
 
   create_table "countries", :force => true do |t|
@@ -112,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20101205164610) do
 
   create_table "tasks", :force => true do |t|
     t.integer  "parent_id"
-    t.integer  "sequence"
+    t.integer  "position"
     t.string   "name",               :limit => 60, :null => false
     t.text     "description"
     t.integer  "status",                           :null => false

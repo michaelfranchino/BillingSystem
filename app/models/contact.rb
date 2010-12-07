@@ -1,4 +1,4 @@
 class Contact < ActiveRecord::Base
-  has_many :client_relationships
-  has_many :clients, :through => :client_relationships
+  belongs_to :contactable, :polymorphic => true
+  has_many :addresses, :as => :addressable
 end

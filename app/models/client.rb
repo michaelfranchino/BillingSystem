@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
-  has_many :client_relationships
-  has_many :contacts, :through => :client_relationships
+  
+  has_many :contacts, :as => :contactable
+  has_many :addresses, :as => :addressable
   has_many :projects
   
 end

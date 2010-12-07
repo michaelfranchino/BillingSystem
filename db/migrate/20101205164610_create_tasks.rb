@@ -2,7 +2,7 @@ class CreateTasks < ActiveRecord::Migration
   def self.up
     create_table :tasks do |t|
       t.integer     :parent_id
-      t.integer     :sequence
+      t.integer     :position
       t.string      :name,         :null => false, :limit => 60
       t.text        :description  
       t.integer     :status,       :null => false
