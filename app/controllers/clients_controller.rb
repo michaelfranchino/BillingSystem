@@ -25,6 +25,8 @@ class ClientsController < ApplicationController
   # GET /clients/new.xml
   def new
     @client = Client.new
+    
+    1.times { @client.addresses.build }
 
     respond_to do |format|
       format.html # new.html.erb
