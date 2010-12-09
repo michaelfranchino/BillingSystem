@@ -1,8 +1,18 @@
-<p>
-  <%= f.input       :street, :as => :text, :input_html => {:cols => 40, :rows => 5} %>
-  <%= f.input       :name, :input_html => {:size => 50}%>
-  <%= f.association :country %>
-  <%= f.association :state %>
-  <%= f.input       :city %>
-  <%= f.input       :postal_code %>
-</p>
+<div class="address">
+  <p>
+    <%= f.input       :street, :as => :text, :input_html => {:cols => 40, :rows => 5} %>
+    <%= f.input       :name, :input_html => {:size => 50}%>
+    <%= f.association :country %>
+    <%= f.association :state %>
+    <%= f.input       :city %>
+    <%= f.input       :postal_code %>
+  </p>
+</div>
+
+
+  <% f.simple_fields_for :contacts do |contact| %>
+    <%= render :partial => 'contact_fields', :f => contact %>
+  <% end %>
+
+
+
