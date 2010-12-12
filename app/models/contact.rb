@@ -1,6 +1,5 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :Name
+  validates_presence_of :name, :title, :first_name, :last_name
   
   belongs_to :contactable, :polymorphic => true
-  has_many :addresses, :as => :addressable
 end

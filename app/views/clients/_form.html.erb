@@ -16,13 +16,19 @@
     <%= f.input :enabled, :label => "Enabled" %>
     <%= f.association :territory %>
   
-  <p>
-    Main address:
-  </p>
+<p>
+Primary contact:
+</p>
+    <% f.simple_fields_for :contacts do |ct| %>
+      <%= render 'contacts/contact_fields', :f => ct %>
+    <% end %>
+<p>
+
+Main address:
+</p>
   <% f.simple_fields_for :addresses do |adr| %>
-    <%= render 'address_fields', :f => adr %>
+    <%= render 'addresses/address_fields', :f => adr %>
   <% end %>
   
   <%= f.button :submit %>
-  
 <% end %>

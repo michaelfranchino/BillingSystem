@@ -8,11 +8,3 @@
     <%= f.input       :postal_code %>
   </p>
 </div>
-
-
-  <% f.simple_fields_for :contacts do |contact| %>
-    <%= render :partial => 'contact_fields', :f => contact %>
-  <% end %>
-
-
-

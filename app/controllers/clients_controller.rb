@@ -25,9 +25,9 @@ class ClientsController < ApplicationController
   # GET /clients/new.xml
   def new
     @client = Client.new
-    address = @client.addresses.build
-    address.contacts.build
-
+    @client.addresses.build
+    @client.contacts.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @client }
